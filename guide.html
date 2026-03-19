@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施工指南 Guide | Primacol Selecta</title>
+<meta name="description" content="Primacol Selecta 07S 專業施工指南。由準備工具到完成油漆，一步步教你打造完美牆面。">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ivory:#FAF8F4;--parchment:#F2EDE6;--sand:#E6DFD4;
+  --warm-gray:#B8AFA4;--taupe:#8C8278;--espresso:#3C3530;
+  --night:#1C1A17;--ink:#0E0D0B;
+  --copper:#C4935A;--copper-glow:#DEB07A;
+  --sage:#7E9474;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans TC',sans-serif;background:var(--ivory);color:var(--espresso);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,80px);height:88px;display:flex;align-items:center;justify-content:space-between;transition:all .5s cubic-bezier(.16,1,.3,1);background:rgba(250,248,244,.96);backdrop-filter:blur(30px);border-bottom:1px solid rgba(60,53,48,.06)}
+nav::before{content:'';position:absolute;inset:0;z-index:1;transition:all .5s}
+nav.scrolled{height:68px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:2}
+.nav-menu{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-menu a{text-decoration:none;color:var(--espresso);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;position:relative;padding:6px 0;transition:color .3s}
+.nav-menu a::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-menu a:hover,.nav-menu a.active{color:var(--copper)}
+.nav-menu a:hover::before,.nav-menu a.active::before{width:100%}
+.nav-cta-btn{padding:6px 0;background:none;border:none;border-radius:0;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--copper);text-decoration:none;transition:color .3s;font-family:'Outfit',sans-serif;position:relative}
+.nav-cta-btn::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-cta-btn:hover::before{width:100%}
+.hamburger{display:none;width:28px;height:20px;position:relative;cursor:pointer;background:none;border:none}
+.hamburger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--espresso);transition:all .3s}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:50%;transform:translateY(-50%)}.hamburger span:nth-child(3){bottom:0;width:60%}
+.lang-switcher{display:flex;align-items:center;gap:4px;margin-left:16px}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--taupe);padding:4px 6px;transition:color .3s;font-family:'Outfit',sans-serif}
+.lang-btn:hover,.lang-btn.active{color:var(--copper)!important}
+.lang-btn.active{border-bottom:1px solid var(--copper)}
+#navMusicBtn{color:var(--espresso);transition:opacity .3s}
+#navMusicBtn:hover{opacity:1!important}
+#navMusicBtn.playing svg{animation:musicPulse 1.8s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
+#navMusicBtn::after{content:attr(data-tooltip);position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,13,11,.82);color:rgba(222,176,122,.95);font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s;z-index:200}
+#navMusicBtn:hover::after{opacity:1}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(14,13,11,.5);z-index:98;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s;pointer-events:none}
+.mobile-nav-overlay.active{opacity:1;pointer-events:auto}
+.mobile-lang-item{display:none}
+.music-nav-item{display:none}
+@media(max-width:768px){
+  .nav-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:300px;background:var(--ivory);z-index:99;padding:100px 32px 40px;flex-direction:column;align-items:flex-start;gap:0;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;overflow-y:auto}
+  .nav-menu.open{transform:translateX(0);pointer-events:auto;display:flex}
+  .nav-menu li{width:100%;border-bottom:1px solid rgba(60,53,48,.06)}
+  .nav-menu a{color:var(--espresso)!important;padding:16px 0;font-size:13px;letter-spacing:1.5px;display:block;width:100%}
+  .nav-menu a::before{display:none}
+  .mobile-lang-item{display:block}
+  .music-nav-item{display:block!important}
+  .hamburger{display:block}
+  #navMusicBtn{display:flex!important;align-items:center}
+  .lang-switcher{display:none!important}
+  .mobile-nav-overlay{display:block}
+  .hamburger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:translateX(10px)}
+  .hamburger.open span:nth-child(3){bottom:50%;width:100%;transform:translateY(50%) rotate(-45deg)}
+}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding: 160px clamp(24px,6vw,100px) 80px;
+  background: linear-gradient(160deg, var(--parchment) 0%, var(--ivory) 60%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(196,147,90,.10) 0%, transparent 70%);
+  pointer-events:none;
+}
+.page-header h1{
+  font-family:'Playfair Display',serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--night);
+  margin-bottom: 16px;
+}
+.page-header h1 em{
+  font-style: italic;
+  color: var(--copper);
+}
+.page-header p{
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--taupe);
+  letter-spacing: 0.04em;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+.page-header-divider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px auto 0;
+}
+.page-header-divider span{
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.5;
+}
+.page-header-divider i{
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper);
+  opacity: 0.7;
+}
+
+/* ── GUIDE SECTION ── */
+.guide-section{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 70px clamp(20px, 5vw, 60px) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── STEP CARD ── */
+.step-card{
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0 32px;
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(60,53,48,.08);
+  position: relative;
+}
+.step-card:last-child{
+  border-bottom: none;
+}
+
+/* ── STEP NUMBER ── */
+.step-number{
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(196,147,90,.18);
+  line-height: 1;
+  padding-top: 4px;
+  letter-spacing: -0.02em;
+  user-select: none;
+  text-align: right;
+  flex-shrink: 0;
+  position: relative;
+}
+.step-number::after{
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: -18px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  opacity: 0.6;
+}
+
+/* ── STEP CONTENT ── */
+.step-content{
+  padding-left: 8px;
+}
+.step-title{
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 500;
+  color: var(--night);
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+.step-text{
+  font-size: 13px;
+  color: var(--taupe);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+}
+
+/* ── STEP LIST ── */
+.step-list{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.step-list li{
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--espresso);
+  line-height: 1.7;
+  padding-left: 16px;
+  position: relative;
+}
+.step-list li::before{
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--copper);
+  font-weight: 300;
+}
+.step-list li strong{
+  font-weight: 500;
+  color: var(--night);
+}
+
+/* ── TIP BOX ── */
+.tip-box{
+  background: linear-gradient(135deg, rgba(196,147,90,.07) 0%, rgba(196,147,90,.03) 100%);
+  border-left: 2px solid rgba(196,147,90,.4);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin-top: 8px;
+}
+.tip-title{
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.tip-text{
+  font-size: 13px;
+  color: var(--taupe);
+  line-height: 1.75;
+}
+
+/* ── CTA SECTION ── */
+.cta-section{
+  background: var(--night);
+  color: var(--ivory);
+  text-align: center;
+  padding: 80px clamp(24px,6vw,100px);
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before{
+  content:'';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(196,147,90,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2{
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+  margin-bottom: 16px;
+  position: relative;
+}
+.cta-section p{
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--warm-gray);
+  max-width: 500px;
+  margin: 0 auto 36px;
+  line-height: 1.75;
+  position: relative;
+}
+.btn-luxe{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  border: 1px solid rgba(196,147,90,.5);
+  border-radius: 2px;
+  color: var(--copper-glow);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
+  position: relative;
+}
+.btn-luxe:hover{
+  background: rgba(196,147,90,.12);
+  border-color: var(--copper-glow);
+  color: var(--copper-glow);
+  gap: 16px;
+}
+
+/* ── FOOTER ── */
+footer{
+  background: var(--ink);
+  color: var(--warm-gray);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  .page-header{padding: 130px 24px 60px}
+  .step-card{
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 36px 0;
+  }
+  .step-number{
+    font-size: 2rem;
+    text-align: left;
+    padding-bottom: 12px;
+  }
+  .step-number::after{display:none}
+  .step-content{padding-left: 0}
+  .guide-section{padding: 40px 20px 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<nav id="mainNav"><div class="nav-inner">
+  <a href="index.html" class="logo">
+    <img src="images/logo/logo-left.png" alt="Primacol" style="height:40px;width:auto">
+    <img src="images/logo/logo-right.png" alt="Selecta" style="height:40px;width:auto">
+  </a>
+  <ul class="nav-menu">
+    <li class="mobile-lang-item" style="border-bottom:1px solid rgba(60,53,48,.06);padding-bottom:16px;margin-bottom:4px">
+      <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-bottom:12px;font-weight:500">🌐 語言 Language</div>
+      <div style="display:flex;gap:8px">
+        <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">繁</button>
+        <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">简</button>
+        <button class="lang-btn" data-lang="en" onclick="I18N.set('en')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">EN</button>
+      </div>
+    </li>
+    <li><a href="index.html#product" data-i18n="nav.product">產品</a></li>
+    <li><a href="index.html#service" data-i18n="nav.painting">油漆工程</a></li>
+    <li><a href="index.html#colours" data-i18n="nav.colours">色彩</a></li>
+    <li><a href="stores.html" data-i18n="nav.stores">門市</a></li>
+    <li><a href="index.html#contact" class="nav-cta-btn" data-i18n="nav.contact">聯絡我們</a></li>
+    <li class="music-nav-item" style="border-top:1px solid rgba(60,53,48,.08);padding-top:16px;margin-top:8px">
+      <button onclick="PrimacolAmbient&&PrimacolAmbient.toggle()" style="background:none;border:1px solid rgba(196,147,90,0.35);border-radius:30px;padding:9px 22px;cursor:pointer;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;color:var(--copper);font-family:'Outfit',sans-serif;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span id="musicBtnText">開啟音樂</span>
+      </button>
+    </li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')">繁</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')">简</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="en" onclick="I18N.set('en')">EN</button>
+  </div>
+  <button id="navMusicBtn" onclick="window.PrimacolAmbient&&PrimacolAmbient.toggle()" aria-label="音樂" data-tooltip="開啟音樂 Music" style="display:flex;align-items:center;background:none;border:none;cursor:pointer;padding:6px;margin-left:4px;transition:opacity .3s;-webkit-tap-highlight-color:transparent;flex-shrink:0;opacity:0.55;position:relative">
+    <svg id="navMusicIconOn" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:block"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <svg id="navMusicIconOff" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>
+  </button>
+  <button class="hamburger" aria-label="選單"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="page-header">
+  <h1 data-i18n="guidePage.title">施工指南 <em>Guide</em></h1>
+  <p data-i18n="guidePage.subtitle">由準備工具到完成油漆，一步步教你打造完美牆面。即使是新手，也能輕鬆完成。</p>
+  <div class="page-header-divider"><span></span><i>Step by Step</i><span></span></div>
+</section>
+
+<section class="guide-section">
+
+  <div class="step-card">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h2 class="step-title" data-i18n="guidePage.step1Title">準備工具 Materials</h2>
+      <p class="step-text" data-i18n="guidePage.step1Body">開始之前，確保你已備齊以下工具：</p>
+      <ul class="step-list">
+        <li>Primacol Selecta 07S 油漆</li>
+        <li>優質滾筒（短毛滾筒效果更佳）或漆掃</li>
+        <li>油漆盤及攪拌棒</li>
+        <li>遮蔽膠帶（美紋紙膠帶）</li>
+        <li>保護膠布或舊報紙</li>
+        <li>填縫劑及刮刀（如有裂縫需修補）</li>
+        <li>砂紙（180-220號）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h2 class="step-title" data-i18n="guidePage.step2Title">牆面準備 Surface Preparation</h2>
+      <p class="step-text" data-i18n="guidePage.step2Body">良好的準備工作是完美效果的關鍵：</p>
+      <ul class="step-list">
+        <li><strong>清潔牆面</strong> — 移除灰塵、油漬及鬆脫的舊漆</li>
+        <li><strong>修補裂縫</strong> — 用填縫劑填平裂縫，待乾後用砂紙打磨平滑</li>
+        <li><strong>保護周邊</strong> — 用遮蔽膠帶保護開關掣、窗框、門框等</li>
+        <li><strong>鋪設保護</strong> — 地面及傢俬鋪設保護膠布</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-title" data-i18n="guidePage.tipLabel">💡 專業提示</div>
+        <div class="tip-text" data-i18n="guidePage.step2Tip">如舊牆有嚴重剝落或發霉，建議先剷底批灰。我們提供專業油漆工程服務，可為您處理複雜的牆面問題。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <h2 class="step-title" data-i18n="guidePage.step3Title">開始塗刷 Application</h2>
+      <p class="step-text" data-i18n="guidePage.step3Body">現在可以開始油漆了！</p>
+      <ul class="step-list">
+        <li><strong>攪拌油漆</strong> — 使用攪拌棒將油漆徹底攪拌均勻</li>
+        <li><strong>邊角先刷</strong> — 先用漆掃處理牆角、邊緣及開關掣周圍</li>
+        <li><strong>滾筒塗刷</strong> — 以「W」字形滾塗，再填滿空白位置</li>
+        <li><strong>均勻力度</strong> — 保持穩定力度，避免厚薄不均</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-title" data-i18n="guidePage.tipLabel">💡 專業提示</div>
+        <div class="tip-text" data-i18n="guidePage.step3Tip">不要過度反覆塗刷同一位置，以免出現刷痕。建議一次過完成一面牆，避免中途停頓造成色差。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <h2 class="step-title" data-i18n="guidePage.step4Title">多層塗刷 Multiple Coats</h2>
+      <p class="step-text" data-i18n="guidePage.step4Body">建議塗刷兩層以達致最佳效果：</p>
+      <ul class="step-list">
+        <li><strong>第一層</strong> — 均勻塗刷，覆蓋整個牆面</li>
+        <li><strong>等候乾透</strong> — 約 2-4 小時（視乎天氣及通風）</li>
+        <li><strong>輕磨牆面</strong> — 用幼砂紙輕輕打磨，移除顆粒</li>
+        <li><strong>第二層</strong> — 垂直於第一層方向塗刷，確保覆蓋均勻</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">5</div>
+    <div class="step-content">
+      <h2 class="step-title" data-i18n="guidePage.step5Title">清理與保養 Clean Up</h2>
+      <p class="step-text" data-i18n="guidePage.step5Body">完成後的清理工作：</p>
+      <ul class="step-list">
+        <li><strong>清理工具</strong> — 用清水清洗滾筒及漆掃，晾乾備用</li>
+        <li><strong>移除膠帶</strong> — 油漆半乾時慢慢撕除遮蔽膠帶</li>
+        <li><strong>通風乾透</strong> — 保持室內通風，待油漆完全乾透（約 24 小時）</li>
+        <li><strong>妥善儲存</strong> — 密封油漆桶，存放於陰涼處（5-30°C）</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-title" data-i18n="guidePage.tipLabel">💡 專業提示</div>
+        <div class="tip-text" data-i18n="guidePage.step5Tip">Selecta 07S 低氣味配方，施工後短時間內即可入住。但建議等待 24 小時讓油漆完全固化，才進行正常清潔。</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="cta-section">
+  <h2 data-i18n="guidePage.ctaTitle">需要專業幫手？</h2>
+  <p data-i18n="guidePage.ctaBody">我們提供專業油漆工程服務，由剷底批灰到完成油漆，一條龍為您打造完美牆面。</p>
+  <a href="https://wa.me/85259785597" class="btn-luxe">
+    <span data-i18n="guidePage.ctaBtn">查詢工程服務</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<footer>
+  <span data-i18n="footer.copyright">©2025 Keira Hong Kong Limited. All rights reserved.</span>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60)});
+const hamburger=document.querySelector('.hamburger');
+const navMenu=document.querySelector('.nav-menu');
+const mobileOverlay=document.getElementById('mobileOverlay');
+function closeMobileNav(){hamburger.classList.remove('open');navMenu.classList.remove('open');mobileOverlay.classList.remove('active');document.body.style.overflow=''}
+function openMobileNav(){hamburger.classList.add('open');navMenu.classList.add('open');mobileOverlay.classList.add('active');document.body.style.overflow='hidden'}
+hamburger.addEventListener('click',()=>{hamburger.classList.contains('open')?closeMobileNav():openMobileNav()});
+mobileOverlay.addEventListener('click',closeMobileNav);
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
+</script>
+<script>
+(function(){
+  var ctx=null,masterGain=null,nodes=[],playing=false,initiated=false;
+  var freqs=[110,138.59,164.81,220,261.63,329.63];
+  function buildReverb(c){var cv=c.createConvolver(),rate=c.sampleRate,len=Math.floor(rate*2.5),buf=c.createBuffer(2,len,rate);for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);}cv.buffer=buf;return cv;}
+  function startAudio(){ctx=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();masterGain=ctx.createGain();masterGain.gain.setValueAtTime(0,ctx.currentTime);masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+4);var rev=buildReverb(ctx),filt=ctx.createBiquadFilter();filt.type='lowpass';filt.frequency.value=650;filt.Q.value=0.4;var rg=ctx.createGain();rg.gain.value=0.45;rev.connect(rg);rg.connect(masterGain);filt.connect(masterGain);masterGain.connect(ctx.destination);freqs.forEach(function(freq,i){var osc=ctx.createOscillator(),g=ctx.createGain();osc.type=i%2===0?'sine':'triangle';osc.frequency.value=freq;var lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=0.025+i*0.011;lg.gain.value=0.25;lfo.connect(lg);lg.connect(osc.frequency);lfo.start();g.gain.value=0.11/freqs.length;osc.connect(g);g.connect(filt);g.connect(rev);osc.start();nodes.push(osc,lfo);});playing=true;syncUI();}
+  function stopAudio(){if(masterGain){masterGain.gain.linearRampToValueAtTime(0,ctx.currentTime+1.5);setTimeout(function(){nodes.forEach(function(n){try{n.stop();}catch(e){}});ctx.close();ctx=null;masterGain=null;nodes=[];},1600);}playing=false;syncUI();}
+  function syncUI(){var ion=document.getElementById('navMusicIconOn'),iof=document.getElementById('navMusicIconOff'),btn=document.getElementById('navMusicBtn');if(ion)ion.style.display=playing?'block':'none';if(iof)iof.style.display=playing?'none':'block';if(btn){btn.style.opacity=playing?'1':'0.55';btn.className=playing?'playing':'';btn.setAttribute('data-tooltip',playing?'關閉音樂 Mute':'開啟音樂 Music');}var nl=document.getElementById('musicBtnText');if(nl)nl.textContent=playing?'關閉音樂':'開啟音樂';}
+  function toggle(){if(!initiated){initiated=true;startAudio();return;}if(playing)stopAudio();else{if(!ctx)startAudio();else{masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+1.5);playing=true;syncUI();}}localStorage.setItem('primacol_music',playing?'on':'off');}
+  function firstInteract(){if(localStorage.getItem('primacol_music')==='off')return;if(!initiated){initiated=true;startAudio();}}
+  document.addEventListener('touchstart',firstInteract,{once:true,passive:true});
+  document.addEventListener('click',firstInteract,{once:true});
+  syncUI();
+  window.PrimacolAmbient={toggle:toggle};
+})();
+</script>
+</body>
+</html>

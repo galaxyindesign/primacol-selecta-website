@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銷售門市 Stores | Primacol Selecta</title>
+<meta name="description" content="Primacol Selecta 07S 香港銷售門市一覽。尋找您附近的油漆專門店。">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ivory:#FAF8F4;--parchment:#F2EDE6;--sand:#E6DFD4;
+  --warm-gray:#B8AFA4;--taupe:#8C8278;--espresso:#3C3530;
+  --night:#1C1A17;--ink:#0E0D0B;
+  --copper:#C4935A;--copper-glow:#DEB07A;--copper-deep:#A07040;
+  --sage:#7E9474;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans TC',sans-serif;background:var(--ivory);color:var(--espresso);-webkit-font-smoothing:antialiased}
+.section-pad{padding:clamp(80px,12vw,160px) clamp(24px,6vw,120px)}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--copper);margin-bottom:22px}
+.sec-eyebrow-line{width:32px;height:1px;background:var(--copper)}
+.sec-title{font-family:'Playfair Display','Noto Sans TC',serif;font-size:clamp(32px,4.2vw,60px);font-weight:300;line-height:1.12;letter-spacing:-1px}
+
+/* ── NAV (matches index.html) ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,80px);height:88px;display:flex;align-items:center;justify-content:space-between;transition:all .5s cubic-bezier(.16,1,.3,1)}
+nav::before{content:'';position:absolute;inset:0;z-index:1;transition:all .5s}
+nav.scrolled::before{background:rgba(250,248,244,.88);backdrop-filter:blur(30px);border-bottom:1px solid rgba(60,53,48,.06)}
+nav.scrolled{height:68px}
+/* stores page: nav always visible (no hero bg) */
+nav{background:rgba(250,248,244,.96);backdrop-filter:blur(30px);border-bottom:1px solid rgba(60,53,48,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:2}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-menu{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-menu a{text-decoration:none;color:var(--espresso);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;position:relative;padding:6px 0;transition:color .3s}
+.nav-menu a::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-menu a:hover{color:var(--copper)}
+.nav-menu a:hover::before{width:100%}
+.nav-menu a.active{color:var(--copper)}
+.nav-menu a.active::before{width:100%}
+.nav-cta-btn{padding:6px 0;background:none;border:none;border-radius:0;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--copper);text-decoration:none;transition:color .3s;font-family:'Outfit',sans-serif;box-shadow:none;position:relative}
+.nav-cta-btn::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-cta-btn:hover::before{width:100%}
+.hamburger{display:none;width:28px;height:20px;position:relative;cursor:pointer;background:none;border:none}
+.hamburger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--espresso);transition:all .3s}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:50%;transform:translateY(-50%)}.hamburger span:nth-child(3){bottom:0;width:60%}
+.lang-switcher{display:flex;align-items:center;gap:4px;margin-left:16px}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--taupe);padding:4px 6px;transition:color .3s;font-family:'Outfit',sans-serif}
+.lang-btn:hover,.lang-btn.active{color:var(--copper)!important}
+.lang-btn.active{border-bottom:1px solid var(--copper)}
+/* Music button */
+#navMusicBtn{color:var(--espresso);transition:color .5s,opacity .3s}
+#navMusicBtn:hover{opacity:1!important}
+#navMusicBtn.playing svg{animation:musicPulse 1.8s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
+#navMusicBtn::after{content:attr(data-tooltip);position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,13,11,.82);color:rgba(222,176,122,.95);font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s;z-index:200}
+#navMusicBtn:hover::after{opacity:1}
+/* Mobile nav open state */
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(14,13,11,.5);z-index:98;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s;pointer-events:none}
+.mobile-nav-overlay.active{opacity:1;pointer-events:auto}
+.mobile-lang-item{display:none}
+.music-nav-item{display:none}
+
+/* Page header */
+.page-header{background:var(--parchment);padding:140px clamp(24px,6vw,120px) 80px;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(196,147,90,.06) 0%,transparent 70%);pointer-events:none}
+.page-header h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:16px;line-height:1.1}
+.page-header p{font-size:15px;color:var(--taupe);max-width:500px;line-height:1.85;margin-top:16px}
+
+/* Stores Layout */
+.stores-two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto}
+.stores-col-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.stores-col-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stores-col-icon.design{background:var(--copper)}
+.stores-col-icon.retail{background:var(--espresso)}
+.stores-col-label{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--espresso)}
+.stores-col-label span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--copper);font-family:'Outfit',sans-serif;font-weight:500;margin-left:8px}
+.store-list{display:flex;flex-direction:column;gap:16px}
+.store-item{padding:22px 24px;background:white;border-radius:14px;border:1px solid rgba(60,53,48,.06);transition:all .3s}
+.store-item:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.store-item.hq{border-left:3px solid var(--copper);background:linear-gradient(135deg,#fff 0%,#faf8f4 100%)}
+.store-item.secondary{border-left:3px solid var(--sand)}
+.store-item-name{font-weight:600;font-size:15px;color:var(--espresso);margin-bottom:6px}
+.store-item-addr{font-size:13px;color:var(--taupe);line-height:1.7;margin-bottom:6px}
+.store-item-tel{font-size:12.5px;color:var(--copper);text-decoration:none;font-weight:500}
+.store-item-tel:hover{text-decoration:underline}
+/* HQ card */
+.store-card-hq{background:white;border-radius:20px;border:1.5px solid rgba(196,147,90,.25);padding:32px;margin-bottom:40px;max-width:1100px;margin-left:auto;margin-right:auto}
+.store-card-hq-inner{display:flex;gap:40px;flex-wrap:wrap}
+.store-hq-info{flex:1;min-width:200px}
+.store-detail{font-size:13.5px;line-height:1.8;color:var(--taupe);margin-bottom:10px;display:flex;align-items:flex-start;gap:10px}
+.store-icon{color:var(--copper);font-size:14px;flex-shrink:0;margin-top:2px}
+.store-detail a{color:var(--copper);text-decoration:none}
+.store-detail a:hover{text-decoration:underline}
+
+/* CTA */
+.cta-section{background:var(--night);color:white;text-align:center;padding:clamp(80px,10vw,140px) clamp(24px,6vw,120px)}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,48px);font-weight:300;margin-bottom:16px}
+.cta-section p{font-size:14px;opacity:.6;max-width:500px;margin:0 auto 36px;line-height:1.85}
+.btn-luxe{display:inline-flex;align-items:center;gap:12px;padding:17px 40px;background:var(--copper);color:var(--ivory);border:none;border-radius:100px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;font-family:'Outfit',sans-serif;transition:all .5s}
+.btn-luxe:hover{background:var(--copper-glow);transform:translateY(-3px);box-shadow:0 16px 40px rgba(196,147,90,.3)}
+
+/* Footer */
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:40px clamp(24px,6vw,120px);text-align:center;font-size:12px;letter-spacing:1px}
+
+/* Mobile */
+@media(max-width:768px){
+  nav{background:rgba(250,248,244,.96)!important;backdrop-filter:blur(30px)!important;border-bottom:1px solid rgba(60,53,48,.06)!important}
+  .nav-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:300px;background:var(--ivory);z-index:99;padding:100px 32px 40px;flex-direction:column;align-items:flex-start;gap:0;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;overflow-y:auto}
+  .nav-menu.open{transform:translateX(0);pointer-events:auto;display:flex}
+  .nav-menu li{width:100%;border-bottom:1px solid rgba(60,53,48,.06)}
+  .nav-menu a{color:var(--espresso)!important;padding:16px 0;font-size:13px;letter-spacing:1.5px;display:block;width:100%}
+  .nav-menu a::before{display:none}
+  .mobile-lang-item{display:block}
+  .music-nav-item{display:block!important}
+  .hamburger{display:block}
+  #navMusicBtn{display:flex!important;align-items:center}
+  .lang-switcher{display:none!important}
+  .mobile-nav-overlay{display:block}
+  .hamburger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:translateX(10px)}
+  .hamburger.open span:nth-child(3){bottom:50%;width:100%;transform:translateY(50%) rotate(-45deg)}
+  .stores-two-col{grid-template-columns:1fr}
+  .store-card-hq{padding:24px 20px}
+  .page-header{padding:120px 24px 60px}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+
+<!-- ══════ NAV ══════ -->
+<nav id="mainNav"><div class="nav-inner">
+  <a href="index.html" class="logo">
+    <img src="images/logo/logo-left.png" alt="Primacol" style="height:40px;width:auto">
+    <img src="images/logo/logo-right.png" alt="Selecta" style="height:40px;width:auto">
+  </a>
+  <ul class="nav-menu">
+    <li class="mobile-lang-item" style="border-bottom:1px solid rgba(60,53,48,.06);padding-bottom:16px;margin-bottom:4px">
+      <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-bottom:12px;font-weight:500">🌐 語言 Language</div>
+      <div style="display:flex;gap:8px">
+        <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;transition:all .2s;font-family:'Outfit',sans-serif">繁</button>
+        <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;transition:all .2s;font-family:'Outfit',sans-serif">简</button>
+        <button class="lang-btn" data-lang="en" onclick="I18N.set('en')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;transition:all .2s;font-family:'Outfit',sans-serif">EN</button>
+      </div>
+    </li>
+    <li><a href="index.html#product" data-i18n="nav.product">產品</a></li>
+    <li><a href="index.html#service" data-i18n="nav.painting">油漆工程</a></li>
+    <li><a href="index.html#colours" data-i18n="nav.colours">色彩</a></li>
+    <li><a href="stores.html" class="active" data-i18n="nav.stores">門市</a></li>
+    <li><a href="index.html#contact" class="nav-cta-btn" data-i18n="nav.contact">聯絡我們</a></li>
+    <li class="music-nav-item" style="border-top:1px solid rgba(60,53,48,.08);padding-top:16px;margin-top:8px">
+      <button id="musicToggleBtn" onclick="PrimacolAmbient&&PrimacolAmbient.toggle()" style="background:none;border:1px solid rgba(196,147,90,0.35);border-radius:30px;padding:9px 22px;cursor:pointer;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;color:var(--copper);font-family:'Outfit',sans-serif;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span id="musicBtnText">開啟音樂</span>
+      </button>
+    </li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')">繁</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')">简</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="en" onclick="I18N.set('en')">EN</button>
+  </div>
+  <button id="navMusicBtn" onclick="window.PrimacolAmbient&&PrimacolAmbient.toggle()" aria-label="音樂" data-tooltip="開啟音樂 Music" style="display:flex;align-items:center;background:none;border:none;cursor:pointer;padding:6px;margin-left:4px;transition:opacity .3s,color .5s;-webkit-tap-highlight-color:transparent;flex-shrink:0;opacity:0.55;position:relative">
+    <svg id="navMusicIconOn" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:block"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <svg id="navMusicIconOff" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>
+  </button>
+  <button class="hamburger" aria-label="選單"><span></span><span></span><span></span></button>
+</div></nav>
+
+<!-- ══════ PAGE HEADER ══════ -->
+<section class="page-header">
+  <div class="sec-eyebrow"><span class="sec-eyebrow-line"></span><span data-i18n="storesPage.eyebrow">Stores 銷售門市</span></div>
+  <h1>
+    <span data-i18n="storesPage.title1">尋找您附近的</span><br>
+    <span data-i18n="storesPage.title2">銷售點</span>
+  </h1>
+  <p data-i18n="storesPage.subtitle">Primacol Selecta 07S 現已於香港多間漆油專門店有售。歡迎聯絡我們了解加盟詳情。</p>
+</section>
+
+<!-- ══════ STORES ══════ -->
+<section class="section-pad">
+
+  <!-- 總部 HQ -->
+  <div class="store-card-hq">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--copper)"></div>
+      <span style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);font-weight:600">總部 Headquarters</span>
+    </div>
+    <div class="store-card-hq-inner">
+      <div class="store-hq-info">
+        <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:400;margin-bottom:4px">騏驊香港有限公司</h3>
+        <div style="font-size:13px;color:var(--taupe);margin-bottom:18px;letter-spacing:.5px">Keira Hong Kong Limited</div>
+        <div class="store-detail"><span class="store-icon">📍</span><span>葵涌大連排道152-160號<br>金龍工業中心1座5樓CD室</span></div>
+        <div class="store-detail"><span class="store-icon">☎</span><a href="tel:+85239970563" class="store-detail" style="margin:0">+852 3997 0563</a></div>
+        <div class="store-detail"><span class="store-icon">✉</span><a href="mailto:primacolselecta@gmail.com" class="store-detail" style="margin:0">primacolselecta@gmail.com</a></div>
+        <div class="store-detail"><span class="store-icon">💬</span><a href="https://wa.me/85259785597" class="store-detail" style="margin:0">WhatsApp +852 5978 5597</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 兩欄：設計公司 + 油漆鋪 -->
+  <div class="stores-two-col">
+
+    <!-- 左：設計公司 -->
+    <div>
+      <div class="stores-col-title">
+        <div class="stores-col-icon design">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 9h3M15 15h3"/></svg>
+        </div>
+        <div class="stores-col-label">設計公司 <span>Design Studios</span></div>
+      </div>
+      <div class="store-list">
+        <div class="store-item hq">
+          <div class="store-item-name">Galaxy Interior Design</div>
+          <div class="store-item-addr">葵芳金龍工業中心 1 座 5 樓 CD 室</div>
+          <a href="tel:+85259785597" class="store-item-tel">☎ +852 5978 5597</a>
+        </div>
+        <div class="store-item secondary">
+          <div class="store-item-name">永誠室內設計</div>
+          <div class="store-item-addr">觀塘鴻圖道 78 號 8 樓 B 室</div>
+        </div>
+        <div class="store-item secondary">
+          <div class="store-item-name">宅配工房</div>
+          <div class="store-item-addr">九龍灣得寶商場 1 樓 236 號鋪</div>
+        </div>
+        <div class="store-item secondary">
+          <div class="store-item-name">ARpha Limited</div>
+          <div class="store-item-addr">上環文咸東街 49 號<br>慶豐商業大廈 18 樓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右：油漆鋪 -->
+    <div>
+      <div class="stores-col-title">
+        <div class="stores-col-icon retail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M3 9l1-5h16l1 5"/><path d="M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M10 14a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
+        </div>
+        <div class="stores-col-label">油漆鋪 <span style="color:var(--taupe)">Paint Retailers</span></div>
+      </div>
+      <div class="store-list">
+        <div class="store-item secondary">
+          <div class="store-item-name">藝燊五金漆油調色公司</div>
+          <div class="store-item-addr">九龍灣環球工商大廈地下 2B 鋪</div>
+        </div>
+        <div class="store-item secondary">
+          <div class="store-item-name">彩壁藝術顏料</div>
+          <div class="store-item-addr">旺角福強工業大廈地下 S2 舖</div>
+        </div>
+        <div class="store-item secondary">
+          <div class="store-item-name">恆昌顏料漆油公司</div>
+          <div class="store-item-addr">大埔太和中心地鋪 29 號</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="cta-section">
+  <h2 data-i18n="storesPage.ctaTitle">成為我們的合作夥伴</h2>
+  <p data-i18n="storesPage.ctaBody">有興趣成為 Primacol Selecta 的授權經銷商？歡迎聯絡我們了解加盟詳情。</p>
+  <a href="https://wa.me/85259785597" class="btn-luxe">
+    <span data-i18n="storesPage.ctaBtn">立即查詢 Contact Us</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<footer>
+  <span data-i18n="footer.copyright">©2025 Keira Hong Kong Limited. All rights reserved.</span>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Mobile hamburger
+const hamburger=document.querySelector('.hamburger');
+const navMenu=document.querySelector('.nav-menu');
+const mobileOverlay=document.getElementById('mobileOverlay');
+function closeMobileNav(){hamburger.classList.remove('open');navMenu.classList.remove('open');mobileOverlay.classList.remove('active');document.body.style.overflow=''}
+function openMobileNav(){hamburger.classList.add('open');navMenu.classList.add('open');mobileOverlay.classList.add('active');document.body.style.overflow='hidden'}
+hamburger.addEventListener('click',()=>{hamburger.classList.contains('open')?closeMobileNav():openMobileNav()});
+mobileOverlay.addEventListener('click',closeMobileNav);
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
+</script>
+
+<script>
+/* ── PRIMACOL AMBIENT MUSIC PLAYER v3 (All Devices) ── */
+(function(){
+  var ctx=null,masterGain=null,nodes=[],playing=false,initiated=false;
+  var freqs=[110,138.59,164.81,220,261.63,329.63];
+
+  function buildReverb(c){
+    var cv=c.createConvolver(),rate=c.sampleRate,len=Math.floor(rate*2.5),buf=c.createBuffer(2,len,rate);
+    for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);}
+    cv.buffer=buf;return cv;
+  }
+
+  function startAudio(){
+    ctx=new(window.AudioContext||window.webkitAudioContext)();
+    if(ctx.state==='suspended')ctx.resume();
+    masterGain=ctx.createGain();
+    masterGain.gain.setValueAtTime(0,ctx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+4);
+    var rev=buildReverb(ctx),filt=ctx.createBiquadFilter();
+    filt.type='lowpass';filt.frequency.value=650;filt.Q.value=0.4;
+    var rg=ctx.createGain();rg.gain.value=0.45;
+    rev.connect(rg);rg.connect(masterGain);
+    filt.connect(masterGain);
+    masterGain.connect(ctx.destination);
+    freqs.forEach(function(freq,i){
+      var osc=ctx.createOscillator(),g=ctx.createGain();
+      osc.type=i%2===0?'sine':'triangle';
+      osc.frequency.value=freq;
+      var lfo=ctx.createOscillator(),lg=ctx.createGain();
+      lfo.frequency.value=0.025+i*0.011;lg.gain.value=0.25;
+      lfo.connect(lg);lg.connect(osc.frequency);lfo.start();
+      g.gain.value=0.11/freqs.length;
+      osc.connect(g);g.connect(filt);g.connect(rev);
+      osc.start();nodes.push(osc,lfo);
+    });
+    playing=true;syncUI();
+  }
+
+  function stopAudio(){
+    if(masterGain){
+      masterGain.gain.linearRampToValueAtTime(0,ctx.currentTime+1.5);
+      setTimeout(function(){nodes.forEach(function(n){try{n.stop();}catch(e){}});ctx.close();ctx=null;masterGain=null;nodes=[];},1600);
+    }
+    playing=false;syncUI();
+  }
+
+  function syncUI(){
+    var iconOn=document.getElementById('navMusicIconOn');
+    var iconOff=document.getElementById('navMusicIconOff');
+    var btn=document.getElementById('navMusicBtn');
+    if(iconOn)iconOn.style.display=playing?'block':'none';
+    if(iconOff)iconOff.style.display=playing?'none':'block';
+    if(btn){btn.style.opacity=playing?'1':'0.55';btn.className=playing?'playing':'';btn.setAttribute('data-tooltip',playing?'關閉音樂 Mute':'開啟音樂 Music');}
+    var navLbl=document.getElementById('musicBtnText');
+    if(navLbl)navLbl.textContent=playing?'關閉音樂':'開啟音樂';
+  }
+
+  function toggle(){
+    if(!initiated){initiated=true;startAudio();return;}
+    if(playing)stopAudio();
+    else{if(!ctx)startAudio();else{masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+1.5);playing=true;syncUI();}}
+    localStorage.setItem('primacol_music',playing?'on':'off');
+  }
+
+  function firstInteract(){
+    if(localStorage.getItem('primacol_music')==='off')return;
+    if(!initiated){initiated=true;startAudio();}
+  }
+  document.addEventListener('touchstart',firstInteract,{once:true,passive:true});
+  document.addEventListener('click',firstInteract,{once:true});
+  syncUI();
+
+  window.PrimacolAmbient={toggle:toggle};
+})();
+</script>
+</body>
+</html>

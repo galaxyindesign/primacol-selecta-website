@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常見問題 FAQ | Primacol Selecta</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="Primacol Selecta 07S 常見問題。解答關於油漆施工、保養、選色等疑問。">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ivory:#FAF8F4;--parchment:#F2EDE6;--sand:#E6DFD4;
+  --warm-gray:#B8AFA4;--taupe:#8C8278;--espresso:#3C3530;
+  --night:#1C1A17;--ink:#0E0D0B;
+  --copper:#C4935A;--copper-glow:#DEB07A;
+  --sage:#7E9474;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans TC',sans-serif;background:var(--ivory);color:var(--espresso);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,80px);height:88px;display:flex;align-items:center;justify-content:space-between;transition:all .5s cubic-bezier(.16,1,.3,1);background:rgba(250,248,244,.96);backdrop-filter:blur(30px);border-bottom:1px solid rgba(60,53,48,.06)}
+nav::before{content:'';position:absolute;inset:0;z-index:1;transition:all .5s}
+nav.scrolled{height:68px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:2}
+.nav-menu{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-menu a{text-decoration:none;color:var(--espresso);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;position:relative;padding:6px 0;transition:color .3s}
+.nav-menu a::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-menu a:hover,.nav-menu a.active{color:var(--copper)}
+.nav-menu a:hover::before,.nav-menu a.active::before{width:100%}
+.nav-cta-btn{padding:6px 0;background:none;border:none;border-radius:0;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--copper);text-decoration:none;transition:color .3s;font-family:'Outfit',sans-serif;position:relative}
+.nav-cta-btn::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--copper);transform:translateX(-50%);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.nav-cta-btn:hover::before{width:100%}
+.hamburger{display:none;width:28px;height:20px;position:relative;cursor:pointer;background:none;border:none}
+.hamburger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--espresso);transition:all .3s}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:50%;transform:translateY(-50%)}.hamburger span:nth-child(3){bottom:0;width:60%}
+.lang-switcher{display:flex;align-items:center;gap:4px;margin-left:16px}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--taupe);padding:4px 6px;transition:color .3s;font-family:'Outfit',sans-serif}
+.lang-btn:hover,.lang-btn.active{color:var(--copper)!important}
+.lang-btn.active{border-bottom:1px solid var(--copper)}
+#navMusicBtn{color:var(--espresso);transition:opacity .3s}
+#navMusicBtn:hover{opacity:1!important}
+#navMusicBtn.playing svg{animation:musicPulse 1.8s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
+#navMusicBtn::after{content:attr(data-tooltip);position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,13,11,.82);color:rgba(222,176,122,.95);font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s;z-index:200}
+#navMusicBtn:hover::after{opacity:1}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(14,13,11,.5);z-index:98;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s;pointer-events:none}
+.mobile-nav-overlay.active{opacity:1;pointer-events:auto}
+.mobile-lang-item{display:none}
+.music-nav-item{display:none}
+@media(max-width:768px){
+  .nav-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:300px;background:var(--ivory);z-index:99;padding:100px 32px 40px;flex-direction:column;align-items:flex-start;gap:0;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;overflow-y:auto}
+  .nav-menu.open{transform:translateX(0);pointer-events:auto;display:flex}
+  .nav-menu li{width:100%;border-bottom:1px solid rgba(60,53,48,.06)}
+  .nav-menu a{color:var(--espresso)!important;padding:16px 0;font-size:13px;letter-spacing:1.5px;display:block;width:100%}
+  .nav-menu a::before{display:none}
+  .mobile-lang-item{display:block}
+  .music-nav-item{display:block!important}
+  .hamburger{display:block}
+  #navMusicBtn{display:flex!important;align-items:center}
+  .lang-switcher{display:none!important}
+  .mobile-nav-overlay{display:block}
+  .hamburger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:translateX(10px)}
+  .hamburger.open span:nth-child(3){bottom:50%;width:100%;transform:translateY(50%) rotate(-45deg)}
+}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding: 160px clamp(24px,6vw,100px) 80px;
+  background: linear-gradient(160deg, var(--parchment) 0%, var(--ivory) 60%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(196,147,90,.10) 0%, transparent 70%);
+  pointer-events:none;
+}
+.page-header h1{
+  font-family:'Playfair Display',serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--night);
+  margin-bottom: 16px;
+}
+.page-header h1 em{
+  font-style: italic;
+  color: var(--copper);
+}
+.page-header p{
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--taupe);
+  letter-spacing: 0.05em;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.page-header-divider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px auto 0;
+}
+.page-header-divider span{
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.5;
+}
+.page-header-divider i{
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper);
+  opacity: 0.7;
+}
+
+/* ── FAQ SECTION ── */
+.faq-section{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px clamp(20px, 5vw, 60px) 100px;
+}
+
+/* ── FAQ CATEGORY ── */
+.faq-category{
+  margin-bottom: 56px;
+}
+.faq-category-title{
+  font-family:'Outfit',sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--sand);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.faq-category-title::before{
+  content:'';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--copper);
+  flex-shrink: 0;
+}
+
+/* ── FAQ ITEM ── */
+.faq-item{
+  border-bottom: 1px solid rgba(60,53,48,.08);
+  transition: background .25s;
+}
+.faq-item:last-child{
+  border-bottom: none;
+}
+
+/* ── QUESTION ── */
+.faq-question{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 4px;
+  cursor: pointer;
+  font-size: clamp(14px, 1.6vw, 15px);
+  font-weight: 500;
+  color: var(--espresso);
+  line-height: 1.5;
+  user-select: none;
+  transition: color .25s;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-question:hover{
+  color: var(--copper);
+}
+.faq-question::after{
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--sand);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238C8278' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center/12px no-repeat;
+  transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .25s;
+}
+.faq-item.open .faq-question{
+  color: var(--copper);
+}
+.faq-item.open .faq-question::after{
+  transform: rotate(180deg);
+  border-color: var(--copper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C4935A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+/* ── ANSWER ── */
+.faq-answer{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .45s cubic-bezier(.16,1,.3,1), padding .3s;
+}
+.faq-item.open .faq-answer{
+  max-height: 600px;
+}
+.faq-answer-inner{
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--taupe);
+  line-height: 1.85;
+  padding: 0 4px 20px;
+}
+.faq-answer-inner strong{
+  color: var(--espresso);
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+footer{
+  background: var(--night);
+  color: var(--warm-gray);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .page-header{
+    padding: 130px 24px 60px;
+  }
+  .faq-section{
+    padding: 40px 20px 80px;
+  }
+  .faq-question{
+    padding: 18px 4px;
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<nav id="mainNav"><div class="nav-inner">
+  <a href="index.html" class="logo">
+    <img src="images/logo/logo-left.png" alt="Primacol" style="height:40px;width:auto">
+    <img src="images/logo/logo-right.png" alt="Selecta" style="height:40px;width:auto">
+  </a>
+  <ul class="nav-menu">
+    <li class="mobile-lang-item" style="border-bottom:1px solid rgba(60,53,48,.06);padding-bottom:16px;margin-bottom:4px">
+      <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-bottom:12px;font-weight:500">🌐 語言 Language</div>
+      <div style="display:flex;gap:8px">
+        <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">繁</button>
+        <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">简</button>
+        <button class="lang-btn" data-lang="en" onclick="I18N.set('en')" style="background:none;border:1px solid var(--sand);border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;color:var(--espresso);padding:8px 16px;font-family:'Outfit',sans-serif">EN</button>
+      </div>
+    </li>
+    <li><a href="index.html#product" data-i18n="nav.product">產品</a></li>
+    <li><a href="index.html#service" data-i18n="nav.painting">油漆工程</a></li>
+    <li><a href="index.html#colours" data-i18n="nav.colours">色彩</a></li>
+    <li><a href="stores.html" data-i18n="nav.stores">門市</a></li>
+    <li><a href="index.html#contact" class="nav-cta-btn" data-i18n="nav.contact">聯絡我們</a></li>
+    <li class="music-nav-item" style="border-top:1px solid rgba(60,53,48,.08);padding-top:16px;margin-top:8px">
+      <button onclick="PrimacolAmbient&&PrimacolAmbient.toggle()" style="background:none;border:1px solid rgba(196,147,90,0.35);border-radius:30px;padding:9px 22px;cursor:pointer;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;color:var(--copper);font-family:'Outfit',sans-serif;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span id="musicBtnText">開啟音樂</span>
+      </button>
+    </li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="zh-Hant" onclick="I18N.set('zh-Hant')">繁</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="zh-Hans" onclick="I18N.set('zh-Hans')">简</button>
+    <span style="color:var(--sand);font-size:10px">·</span>
+    <button class="lang-btn" data-lang="en" onclick="I18N.set('en')">EN</button>
+  </div>
+  <button id="navMusicBtn" onclick="window.PrimacolAmbient&&PrimacolAmbient.toggle()" aria-label="音樂" data-tooltip="開啟音樂 Music" style="display:flex;align-items:center;background:none;border:none;cursor:pointer;padding:6px;margin-left:4px;transition:opacity .3s;-webkit-tap-highlight-color:transparent;flex-shrink:0;opacity:0.55;position:relative">
+    <svg id="navMusicIconOn" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:block"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <svg id="navMusicIconOff" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/></svg>
+  </button>
+  <button class="hamburger" aria-label="選單"><span></span><span></span><span></span></button>
+</div></nav>
+
+<section class="page-header">
+  <h1 data-i18n="faqPage.title">常見問題 <em>FAQ</em></h1>
+  <p data-i18n="faqPage.subtitle">解答關於 Primacol Selecta 07S 油漆施工、保養、選色等常見疑問。</p>
+  <div class="page-header-divider"><span></span><i>Frequently Asked Questions</i><span></span></div>
+</section>
+
+<section class="faq-section">
+
+  <div class="faq-category">
+    <h2 class="faq-category-title" data-i18n="faqPage.cat1">產品特性 Product</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q1">Selecta 07S 是否環保安全？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n-html="faqPage.a1">是的。Selecta 07S 獲得多項國際認證，包括歐盟 Ecolabel、香港綠色標籤及中國 3C 認證。產品零甲醛、低 VOC（33g/L），不含重金屬及有害物質，適合有兒童及寵物的家庭使用。施工後氣味極低，短時間內即可入住。</div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q2">07S 與 02S、10S 有什麼分別？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n-html="faqPage.a2">三款產品同為 Primacol Selecta 系列，主要分別在於光澤度：<br><br>
+        <strong>02S 超啞光</strong> — 深度消光效果，適合天花板及高反光區域<br>
+        <strong>07S 啞光</strong> — 高遮蓋啞光塗層，耐擦洗、易清潔，適用於客廳、睡房等日常空間<br>
+        <strong>10S 緞光</strong> — 表面帶柔和光澤，兼具裝飾性與耐用性，適合走廊、商業空間</div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q3">覆蓋力如何？一桶可以油幾多面積？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n-html="faqPage.a3">Selecta 07S 遮蓋力達 ≥98%（白色），每公升可覆蓋 8-14 m²（兩層計算）。<br><br>
+        <strong>1L</strong> — 約 50-60 平方尺（兩層）<br>
+        <strong>3L</strong> — 約 150-180 平方尺（兩層）<br>
+        <strong>5L</strong> — 約 280-320 平方尺（兩層）<br><br>
+        實際用量會因牆面狀況及吸收率而有所不同。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <h2 class="faq-category-title" data-i18n="faqPage.cat2">施工方法 Application</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q4">可以自己 DIY 施工嗎？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faqPage.a4">可以！Selecta 07S 設計為新手友善，塗刷流暢不飛濺。建議使用優質滾筒或漆掃，先將油漆攪拌均勻。如牆面狀況良好，可直接翻油兩層。如需剷底批灰，建議委託專業師傅。我們亦提供專業油漆工程服務。</div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q5">施工前需要做什麼準備？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n-html="faqPage.a5">
+        1. 清潔牆面，移除灰塵及油漬<br>
+        2. 用遮蔽膠帶保護開關掣、窗框等<br>
+        3. 地面鋪設保護膠布<br>
+        4. 如有裂縫或剝落，先進行修補<br>
+        5. 攪拌油漆至均勻狀態
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q6">需要油幾多層？每層相隔幾耐？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faqPage.a6">一般建議兩層面漆。如牆面顏色較深或覆蓋舊漆，可能需要三層。每層相隔約 2-4 小時（視乎天氣及通風情況），待乾透後才可進行下一層。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <h2 class="faq-category-title" data-i18n="faqPage.cat3">保養維護 Maintenance</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q7">牆面污漬可以清潔嗎？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faqPage.a7">可以。Selecta 07S 具耐擦洗特性（10,000 次測試），日常污漬可用微濕布輕輕擦拭。避免使用強力清潔劑或粗糙物料，以免損壞漆面。</div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q8">油漆可以保存幾耐？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faqPage.a8">未開封的油漆在適當儲存條件下（密封容器、避免陽光直射、溫度 5-30°C）可保存 2-3 年。開封後建議盡快使用，並確保密封保存。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <h2 class="faq-category-title" data-i18n="faqPage.cat4">訂購與配送 Ordering</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q9">如何訂購？有送貨服務嗎？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faqPage.a9">您可以透過 WhatsApp +852 5978 5597 或電郵 primacolselecta@gmail.com 訂購。我們提供香港地區送貨服務，一般可安排次日送達（偏遠地區除外）。詳情請聯絡我們查詢。</div>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-i18n="faqPage.q10">可以調配特定顏色嗎？</div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n-html="faqPage.a10">可以。我們的專業色彩顧問團隊提供一對一人手調色服務——無論您帶來色辦、圖片，甚至只有一個模糊的色彩概念，我們都能精準還原，調出您心目中的理想顏色。<br><br>
+        配合 <strong>Mega Color 專業調色系統</strong>，可調配超過 <strong>1,000 種顏色</strong>，亦可參考我們的 72 色標準色卡選色。<br><br>
+        每一罐都是根據您的需求現場調製，確保色調一致、批次準確。調色服務需額外收費（$800/色），歡迎<strong>聯絡我們的色彩顧問</strong>查詢詳情。</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <span data-i18n="footer.copyright">©2025 Keira Hong Kong Limited. All rights reserved.</span>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+// Ensure answers are collapsed on load
+document.querySelectorAll('.faq-answer').forEach(a => { a.style.maxHeight = '0'; });
+document.addEventListener('click', e => {
+  const q = e.target.closest('.faq-question');
+  if (!q) return;
+  const answer = q.nextElementSibling;
+  const isOpen = q.parentElement.classList.contains('open');
+  document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = '0');
+  if (!isOpen && answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+});
+</script>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60)});
+const hamburger=document.querySelector('.hamburger');
+const navMenu=document.querySelector('.nav-menu');
+const mobileOverlay=document.getElementById('mobileOverlay');
+function closeMobileNav(){hamburger.classList.remove('open');navMenu.classList.remove('open');mobileOverlay.classList.remove('active');document.body.style.overflow=''}
+function openMobileNav(){hamburger.classList.add('open');navMenu.classList.add('open');mobileOverlay.classList.add('active');document.body.style.overflow='hidden'}
+hamburger.addEventListener('click',()=>{hamburger.classList.contains('open')?closeMobileNav():openMobileNav()});
+mobileOverlay.addEventListener('click',closeMobileNav);
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
+</script>
+<script>
+(function(){
+  var ctx=null,masterGain=null,nodes=[],playing=false,initiated=false;
+  var freqs=[110,138.59,164.81,220,261.63,329.63];
+  function buildReverb(c){var cv=c.createConvolver(),rate=c.sampleRate,len=Math.floor(rate*2.5),buf=c.createBuffer(2,len,rate);for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);}cv.buffer=buf;return cv;}
+  function startAudio(){ctx=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();masterGain=ctx.createGain();masterGain.gain.setValueAtTime(0,ctx.currentTime);masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+4);var rev=buildReverb(ctx),filt=ctx.createBiquadFilter();filt.type='lowpass';filt.frequency.value=650;filt.Q.value=0.4;var rg=ctx.createGain();rg.gain.value=0.45;rev.connect(rg);rg.connect(masterGain);filt.connect(masterGain);masterGain.connect(ctx.destination);freqs.forEach(function(freq,i){var osc=ctx.createOscillator(),g=ctx.createGain();osc.type=i%2===0?'sine':'triangle';osc.frequency.value=freq;var lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=0.025+i*0.011;lg.gain.value=0.25;lfo.connect(lg);lg.connect(osc.frequency);lfo.start();g.gain.value=0.11/freqs.length;osc.connect(g);g.connect(filt);g.connect(rev);osc.start();nodes.push(osc,lfo);});playing=true;syncUI();}
+  function stopAudio(){if(masterGain){masterGain.gain.linearRampToValueAtTime(0,ctx.currentTime+1.5);setTimeout(function(){nodes.forEach(function(n){try{n.stop();}catch(e){}});ctx.close();ctx=null;masterGain=null;nodes=[];},1600);}playing=false;syncUI();}
+  function syncUI(){var ion=document.getElementById('navMusicIconOn'),iof=document.getElementById('navMusicIconOff'),btn=document.getElementById('navMusicBtn');if(ion)ion.style.display=playing?'block':'none';if(iof)iof.style.display=playing?'none':'block';if(btn){btn.style.opacity=playing?'1':'0.55';btn.className=playing?'playing':'';btn.setAttribute('data-tooltip',playing?'關閉音樂 Mute':'開啟音樂 Music');}var nl=document.getElementById('musicBtnText');if(nl)nl.textContent=playing?'關閉音樂':'開啟音樂';}
+  function toggle(){if(!initiated){initiated=true;startAudio();return;}if(playing)stopAudio();else{if(!ctx)startAudio();else{masterGain.gain.linearRampToValueAtTime(0.05,ctx.currentTime+1.5);playing=true;syncUI();}}localStorage.setItem('primacol_music',playing?'on':'off');}
+  function firstInteract(){if(localStorage.getItem('primacol_music')==='off')return;if(!initiated){initiated=true;startAudio();}}
+  document.addEventListener('touchstart',firstInteract,{once:true,passive:true});
+  document.addEventListener('click',firstInteract,{once:true});
+  syncUI();
+  window.PrimacolAmbient={toggle:toggle};
+})();
+</script>
+</body>
+</html>
